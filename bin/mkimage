@@ -16,7 +16,7 @@
 
 RELEASE=_rel/minerl
 
-mkdir -p ${RELEASE}/lib64 ${RELEASE}/bin
+mkdir -p ${RELEASE}/lib64
 
 cp /lib/x86_64-linux-gnu/lib{pthread,c,dl,nsl,nss_*}.so.* ${RELEASE}/lib64
 cp /lib64/ld-linux-x86-64.so.* ${RELEASE}/lib64
