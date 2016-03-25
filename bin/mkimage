@@ -1,4 +1,4 @@
-#-*- mode: makefile-gmake -*-
+#!/usr/bin/env bash
 # Copyright (c) 2012-2016 Peter Morgan <peter.james.morgan@gmail.com>
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,8 +13,10 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-PROJECT = minerl
-PROJECT_DESCRIPTION = New project
-PROJECT_VERSION = 0.0.1
 
-include erlang.mk
+RELEASE=_rel/minerl
+
+cp /lib/x86_64-linux-gnu/lib{pthread,c,dl,nsl,nss_*}.so.* ${RELEASE}/lib
+cp /lib64/ld-linux-x86-64.so.* ${RELEASE}/lib
+
+cp /bin/sh ${RELEASE}/bin
