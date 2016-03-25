@@ -16,10 +16,10 @@
 
 RELEASE=_rel/minerl
 
-mkdir -p ${RELEASE}/lib64
+mkdir -p ${RELEASE}/lib64 etc
 
 cp -r /lib/x86_64-linux-gnu ${RELEASE}/lib
-cp -r /lib64 ${RELEASE}/lib64
+cp /lib64/* ${RELEASE}/lib64
 
 echo "/lib/x86_64-linux-gnu\n/lib64" > /etc/ld.so.conf
 
