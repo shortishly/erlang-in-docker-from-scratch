@@ -17,7 +17,12 @@ MAINTAINER Peter Morgan <peter.james.morgan@gmail.com>
 
 ENV BINDIR /erts-7.3/bin
 
-ENTRYPOINT ["/erts-7.3/bin/erlexec"]
-CMD ["-boot_var", "/lib", "-boot", "/releases/1/minerl"]
+ENTRYPOINT ["/bin/beam.smp"]
+CMD ["-boot_var", "/lib", "-boot", "/releases/minerl"]
 
-ADD _rel/minerl/ /
+ADD _rel/minerl/erts-7.3/bin/beam.smp /bin/
+
+ADD _rel/minerl/bin/ /
+ADD _rel/minerl/lib/ /
+ADD _rel/minerl/lib64/ /
+ADD _rel/minerl/releases/1/ /releases/
