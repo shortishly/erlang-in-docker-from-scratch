@@ -15,6 +15,8 @@
 FROM scratch
 MAINTAINER Peter Morgan <peter.james.morgan@gmail.com>
 
+ENV BINDIR /erts-7.3/bin
+
 ENTRYPOINT ["/erts-7.3/bin/erlexec"]
 CMD ["-boot_var", "/lib", "-boot", "/releases/1/minerl", "-noshell"]
 
