@@ -24,7 +24,8 @@ ENV BINDIR /erts-7.3/bin
 ENV EMU beam
 ENV PROGNAME erl
 ENV LD_LIBARY_PATH ${ERTS_DIR}/lib:${LD_LIBRARY_PATH}
+ENV ERTS_LIB_DIR /lib
 
-ENTRYPOINT ${BINDIR}/erlexec -boot ${REL_DIR}/${REL_NAME}
+ENTRYPOINT ${BINDIR}/erlexec -boot_var ${ERTS_LIB_DIR} -boot ${REL_DIR}/${REL_NAME}
 
 ADD _rel/minerl/ /
