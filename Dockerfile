@@ -22,7 +22,7 @@ CMD ["-boot_var", "/lib", "-boot", "/releases/minerl"]
 
 ADD _rel/minerl/erts-7.3/bin/beam.smp /bin/
 
-ADD _rel/minerl/bin/ /
-ADD _rel/minerl/lib/ /
-ADD _rel/minerl/lib64/ /
+ADD _rel/minerl/bin/ /bin/
+ADD _rel/minerl/lib/ /lib/
+ADD _rel/minerl/lib64/ /lib64/
 ADD _rel/minerl/releases/1/ /releases/
