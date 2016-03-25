@@ -10,6 +10,7 @@ app:
   stage: build
   script:
     - make
+    - cp /bin/sh _rel/minerl/bin
     - docker build --pull=true --no-cache=true --force-rm=true -t reg001.local:5000/shortishly/minerl .
     - docker push reg001.local:5000/shortishly/minerl
   only:
