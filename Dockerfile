@@ -15,7 +15,6 @@
 FROM scratch
 MAINTAINER Peter Morgan <peter.james.morgan@gmail.com>
 
-ENTRYPOINT ["/bin/minerl"]
-CMD ["foreground"]
+ENTRYPOINT ["/erts-7.3/bin/erlexec"]
 
 ADD _rel/minerl/ /
