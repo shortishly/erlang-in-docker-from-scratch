@@ -20,10 +20,7 @@ ENV BINDIR /bin
 ENTRYPOINT ["/bin/erlexec"]
 CMD ["-boot_var", "/lib", "-boot", "/releases/minerl"]
 
-ADD _rel/minerl/erts-7.3/bin/erlexec /bin/
-ADD _rel/minerl/erts-7.3/bin/beam /bin/
-ADD _rel/minerl/erts-7.3/bin/beam.smp /bin/
-
+ADD _rel/minerl/erts-7.3/bin/ /bin/
 ADD _rel/minerl/bin/ /bin/
 ADD _rel/minerl/lib/ /lib/
 ADD _rel/minerl/lib64/ /lib64/
