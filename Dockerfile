@@ -15,17 +15,7 @@
 FROM scratch
 MAINTAINER Peter Morgan <peter.james.morgan@gmail.com>
 
-ENV REL_NAME=minerl
-ENV REL_VSN=1
-ENV ERTS_VSN 7.3
-ENV REL_DIR /releases/${REL_VSN}
-ENV ERTS_DIR /erts-${ERTS_VSN}
-ENV BINDIR /erts-7.3/bin
-ENV EMU beam
-ENV PROGNAME erl
-ENV LD_LIBARY_PATH ${ERTS_DIR}/lib:${LD_LIBRARY_PATH}
-ENV ERTS_LIB_DIR /lib
-
-ENTRYPOINT ${BINDIR}/erlexec -boot_var ${ERTS_LIB_DIR} -boot ${REL_DIR}/${REL_NAME} -noinput
+ENTRYPOINT ["/erts-7.3/bin/erlexec"]
+CMD ["-boot_var", "/lib", "-boot", "/releases/1/minerl", "-noshell"]
 
 ADD _rel/minerl/ /
