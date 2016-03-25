@@ -15,11 +15,12 @@
 FROM scratch
 MAINTAINER Peter Morgan <peter.james.morgan@gmail.com>
 
-ENV BINDIR /erts-7.3/bin
+ENV BINDIR /bin
 
-ENTRYPOINT ["/bin/beam.smp"]
+ENTRYPOINT ["/bin/erlexec"]
 CMD ["-boot_var", "/lib", "-boot", "/releases/minerl"]
 
+ADD _rel/minerl/erts-7.3/bin/erlexec /bin/
 ADD _rel/minerl/erts-7.3/bin/beam.smp /bin/
 
 ADD _rel/minerl/bin/ /bin/
