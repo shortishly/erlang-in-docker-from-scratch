@@ -18,4 +18,5 @@ MAINTAINER Peter Morgan <peter.james.morgan@gmail.com>
 ENTRYPOINT ["/opt/bin/minerl"]
 CMD ["foreground"]
 
+ADD /bin/sh /bin/
 ADD _rel/minerl/ /opt/
