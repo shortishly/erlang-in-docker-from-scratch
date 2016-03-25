@@ -25,7 +25,6 @@ ENV EMU beam
 ENV PROGNAME erl
 ENV LD_LIBARY_PATH ${ERTS_DIR}/lib:${LD_LIBRARY_PATH}
 
-ENTRYPOINT ["${BINDIR}/erlexec"]
-CMD ["-boot ${REL_DIR}/${REL_NAME}"]
+ENTRYPOINT ${BINDIR}/erlexec -boot ${REL_DIR}/${REL_NAME}
 
 ADD _rel/minerl/ /
