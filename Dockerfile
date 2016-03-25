@@ -18,6 +18,10 @@ MAINTAINER Peter Morgan <peter.james.morgan@gmail.com>
 ENV BINDIR /erts-7.3/bin
 
 ENTRYPOINT ["/erts-7.3/bin/erlexec"]
-CMD ["-boot_var", "/lib", "-boot", "/releases/1/minerl", "-noinput"]
+CMD ["-boot_var", "/lib",
+    "-boot", "/releases/1/minerl",
+    "-noinput",
+    "-config", "releases/sys.config",
+    "-args_file", "releases/vm.args"]
 
 ADD _rel/minerl/ /
