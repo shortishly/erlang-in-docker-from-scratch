@@ -15,7 +15,17 @@
 FROM scratch
 MAINTAINER Peter Morgan <peter.james.morgan@gmail.com>
 
-ENTRYPOINT ["/bin/sh"]
-CMD ["--help"]
+ENV REL_NAME=minerl
+ENV REL_VSN=1
+ENV ERTS_VSN 7.3
+ENV REL_DIR /releases/${REL_VSN}
+ENV ERTS_DIR /erts-${ERTS_VSN}
+ENV BINDIR /erts-7.3/bin
+ENV EMU beam
+ENV PROGNAME erl
+ENV LD_LIBARY_PATH ${ERTS_DIR}/lib:${LD_LIBRARY_PATH}
+
+ENTRYPOINT ["${BINDIR}/erlexec"]
+CMD ["-boot ${REL_DIR}/${REL_NAME}"]
 
 ADD _rel/minerl/ /
