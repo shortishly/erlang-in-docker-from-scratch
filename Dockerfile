@@ -21,6 +21,7 @@ ENTRYPOINT ["/bin/erlexec"]
 CMD ["-boot_var", "/lib", "-boot", "/releases/minerl"]
 
 ADD _rel/minerl/erts-7.3/bin/erlexec /bin/
+ADD _rel/minerl/erts-7.3/bin/beam /bin/
 ADD _rel/minerl/erts-7.3/bin/beam.smp /bin/
 
 ADD _rel/minerl/bin/ /bin/
