@@ -18,5 +18,4 @@ MAINTAINER Peter Morgan <peter.james.morgan@gmail.com>
 ENTRYPOINT ["/bin/sh"]
 CMD ["--help"]
 
-ADD _rel/
 ADD _rel/minerl/ /
