@@ -15,6 +15,7 @@
 FROM scratch
 MAINTAINER Peter Morgan <peter.james.morgan@gmail.com>
 
-ENTRYPOINT ["/erts-7.3/bin/erlexec"]
+ENTRYPOINT ["/bin/sh"]
+CMD ["--help"]
 
-ADD _rel/minerl/ /
+ADD _rel/minerl/ /opt/
