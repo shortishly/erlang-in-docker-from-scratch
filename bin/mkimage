@@ -16,7 +16,9 @@
 
 RELEASE=_rel/minerl
 
-mkdir -p ${RELEASE}/lib64 etc
+/usr/bin/strip _rel/*/erts-*/bin/*
+
+mkdir -p ${RELEASE}/lib64
 
 cp -r /lib/x86_64-linux-gnu ${RELEASE}/lib
 cp /lib64/* ${RELEASE}/lib64
