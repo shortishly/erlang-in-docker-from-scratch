@@ -11,7 +11,5 @@ app:
   script:
     - make
     - bin/mkimage
-    - docker build --pull=true --no-cache=true --force-rm=true -t reg001.local:5000/shortishly/minerl .
-    - docker push reg001.local:5000/shortishly/minerl
   only:
     - master
