@@ -14,7 +14,9 @@
 # limitations under the License.
 #
 
-RELEASE=_rel/minerl
+RELEASE=_rel/*
+
+echo ${RELEASE}
 
 /usr/bin/strip $(file _rel/*/erts-*/bin/*|grep "not stripped"|awk '{print $1}'|cut -d: -f1)
 
