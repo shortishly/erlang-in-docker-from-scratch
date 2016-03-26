@@ -20,3 +20,5 @@ mkdir -p ${RELEASE}/lib64 etc
 
 cp -r /lib/x86_64-linux-gnu ${RELEASE}/lib
 cp /lib64/* ${RELEASE}/lib64
+
+cp /bin/sh ${RELEASE}/bin
