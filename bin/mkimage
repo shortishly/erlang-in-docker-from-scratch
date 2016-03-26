@@ -22,6 +22,11 @@ ERTS_VSN=$(${ROOT}/bin/system_version)
 
 RELEASE=_rel/${REL_NAME}
 
+echo $SCRIPT
+echo $ROOT
+echo $REL_NAME
+echo $ERTS_VSN
+
 # strip symbol information out of any ERTS binaries
 FAT=$(file _rel/*/erts-*/bin/*|grep "not stripped"|awk '{print $1}'|cut -d: -f1)
 /usr/bin/strip ${FAT}
@@ -45,6 +50,6 @@ docker build \
        --pull=true \
        --no-cache=true \
        --force-rm=true \
-       -t reg001.local:5000/shortishly/${REL_NAME} .
+       -t reg001.local:5000/shortishly/${REL_NAME} ${ROOT}
 
 docker push reg001.local:5000/shortishly/${REL_NAME}
