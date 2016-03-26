@@ -21,7 +21,8 @@ RELEASE=_rel/minerl
 mkdir -p ${RELEASE}/lib64
 
 for lib in $(ldd _rel/*/erts-*/bin/*|grep "=>"|awk '{print $3}'|sort|uniq); do
-    cp -Lrv $lib ${RELEASE}/$lib
+    mkdir -p $(dirname ${RELEASE}/$lib)
+    cp -Lv $lib ${RELEASE}/$lib
 done
 
 cp /lib64/* ${RELEASE}/lib64
