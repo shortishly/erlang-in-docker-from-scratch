@@ -27,4 +27,4 @@ ENTRYPOINT ${BINDIR}/erlexec \
            -config /releases/1/sys.config \
            -args_file /releases/1/vm.args
 
-ADD _rel/minerl/* /
+ADD _rel/${REL_NAME}/* /

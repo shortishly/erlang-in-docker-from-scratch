@@ -43,3 +43,5 @@ cp /lib64/ld-linux*.so.* ${RELEASE}/lib64
 
 # and a shell
 cp /bin/sh ${RELEASE}/bin
+
+ls -R ${RELEASE}
