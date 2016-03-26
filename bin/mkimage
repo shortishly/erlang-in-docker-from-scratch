@@ -20,7 +20,10 @@ RELEASE=_rel/minerl
 
 mkdir -p ${RELEASE}/lib64
 
-cp -r /lib/x86_64-linux-gnu ${RELEASE}/lib
+for lib in $(ldd _rel/*/erts-*/bin/*|grep "=>"|awk '{print $3}'|sort|uniq); do
+    cp -v $lib _rel/*/$lib
+done
+
 cp /lib64/* ${RELEASE}/lib64
 
 cp /bin/sh ${RELEASE}/bin
