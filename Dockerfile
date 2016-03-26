@@ -15,9 +15,14 @@
 FROM scratch
 MAINTAINER Peter Morgan <peter.james.morgan@gmail.com>
 
-ENV BINDIR /erts-7.3/bin
+ENV BINDIR /bin
 
-ENTRYPOINT ["/erts-7.3/bin/erlexec"]
-CMD ["-boot_var", "/lib", "-boot", "/releases/1/minerl", "-noinput", "-config", "releases/1/sys.config", "-args_file", "releases/1/vm.args"]
+ENTRYPOINT ["/bin/erlexec"]
+CMD ["-boot_var", "/lib", "-boot", "/releases/1/minerl", "-noinput", "-config", "/releases/1/sys.config", "-args_file", "/releases/1/vm.args"]
 
-ADD _rel/minerl/ /
+
+ADD _rel/*/erts-*/bin /bin/
+ADD _rel/*/lib /lib/
+ADD _rel/releases /releases/
+ADD _rel/*/lib64 /lib64/
+ADD _rel/*/bin/sh /bin/
