@@ -15,11 +15,4 @@
 FROM scratch
 MAINTAINER Peter Morgan <peter.james.morgan@gmail.com>
 
-ENV REL_NAME minerl
-ENV ERTS_VSN 7.3
-
-ENV BINDIR /erts-${ERTS_VSN}/bin
-
-ENTRYPOINT exec ${BINDIR}/erlexec -boot_var /lib -boot /releases/1/${REL_NAME} -noinput -config /releases/1/sys.config -args_file /releases/1/vm.args
-
-ADD _rel/${REL_NAME}/* /
+ADD _rel/minerl/* /
