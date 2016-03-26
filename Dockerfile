@@ -23,6 +23,6 @@ CMD ["-boot_var", "/lib", "-boot", "/releases/1/minerl", "-noinput", "-config", 
 
 ADD _rel/*/erts-*/bin /bin/
 ADD _rel/*/lib /lib/
-ADD _rel/releases /releases/
+ADD _rel/*/releases /releases/
 ADD _rel/*/lib64 /lib64/
 ADD _rel/*/bin/sh /bin/
