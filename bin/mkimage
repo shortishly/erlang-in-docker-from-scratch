@@ -16,7 +16,7 @@
 
 RELEASE=_rel/minerl
 
-/usr/bin/strip _rel/*/erts-*/bin/*
+/usr/bin/strip $(file _rel/*/erts-*/bin/*|grep "not stripped"|awk '{print $1}'|cut -d: -f1)
 
 mkdir -p ${RELEASE}/lib64
 
