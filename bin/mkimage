@@ -16,17 +16,18 @@
 
 RELEASE=_rel/*
 
-echo ${RELEASE}
-
+# strip symbol information out of any ERTS binaries
 /usr/bin/strip $(file _rel/*/erts-*/bin/*|grep "not stripped"|awk '{print $1}'|cut -d: -f1)
 
-mkdir -p ${RELEASE}/lib64
-
+# copy any dynamically linked libaries used by ERTS into release
 for lib in $(ldd _rel/*/erts-*/bin/*|grep "=>"|awk '{print $3}'|sort|uniq); do
-    mkdir -p $(dirname ${RELEASE}/$lib)
-    cp -Lv $lib ${RELEASE}/$lib
+    mkdir -p $(dirname ${RELEASE}$lib)
+    cp -Lv $lib ${RELEASE}$lib
 done
 
-cp /lib64/* ${RELEASE}/lib64
+# ensure that the link loader is present
+mkdir -p ${RELEASE}/lib64
+cp /lib64/ld-linux*.so.* ${RELEASE}/lib64
 
+# and a shell
 cp /bin/sh ${RELEASE}/bin
