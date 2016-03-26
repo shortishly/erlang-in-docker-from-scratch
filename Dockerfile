@@ -15,8 +15,8 @@
 FROM scratch
 MAINTAINER Peter Morgan <peter.james.morgan@gmail.com>
 
-ARG REL_NAME
-ARG ERTS_VSN
+ENV REL_NAME minerl
+ENV ERTS_VSN 7.3
 
 ENV BINDIR /erts-${ERTS_VSN}/bin
 
