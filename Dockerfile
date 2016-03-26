@@ -18,8 +18,8 @@ MAINTAINER Peter Morgan <peter.james.morgan@gmail.com>
 ARG REL_NAME
 ARG ERTS_VSN
 
-ENV BINDIR ${ERTS_VSN}/bin
+ENV BINDIR /erts-${ERTS_VSN}/bin
 
-ENTRYPOINT ${BINDIR}/erlexec -boot_var /lib -boot /releases/1/${REL_NAME} -noinput -config /releases/1/sys.config -args_file /releases/1/vm.args
+ENTRYPOINT exec ${BINDIR}/erlexec -boot_var /lib -boot /releases/1/${REL_NAME} -noinput -config /releases/1/sys.config -args_file /releases/1/vm.args
 
 ADD _rel/${REL_NAME}/* /
