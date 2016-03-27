@@ -24,6 +24,8 @@ ENV BOOT /releases/1/${REL_NAME}
 ENV CONFIG /releases/${REL_VSN}/sys.config
 ENV ARGS_FILE /releases/${REL_VSN}/vm.args
 
+ENV TZ=GMT
+
 ENTRYPOINT exec ${BINDIR}/erlexec \
            -boot_var /lib \
            -boot ${BOOT} \

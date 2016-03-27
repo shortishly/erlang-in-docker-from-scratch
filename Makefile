@@ -13,8 +13,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-PROJECT = minerl
-PROJECT_DESCRIPTION = New project
+PROJECT = eidfs
+PROJECT_DESCRIPTION = Erlang in Docker from scratch
 PROJECT_VERSION = 0.0.1
 
 

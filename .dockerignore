@@ -1,0 +1,11 @@
+.erlang.mk
+.git*
+*~
+LICENSE
+Makefile
+bin
+ebin
+erlang.mk
+rel*
+src
+*.d
