@@ -11,7 +11,6 @@ app:
   script:
     - make
     - bin/mkimage
-    - docker build --pull=true --no-cache=true --force-rm=true -t reg001.local:5000/shortishly/minerl .
-    - docker push reg001.local:5000/shortishly/minerl
+    - docker build --build-arg REL_NAME=$(bin/release_name) --build-arg ERTS_VSN=$(bin/system_version) --pull=true --no-cache=true --force-rm=true -t $(bin/release_name):$(bin/version) .
   only:
     - master

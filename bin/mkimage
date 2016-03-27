@@ -14,18 +14,9 @@
 # limitations under the License.
 #
 
-SCRIPT=$_
-ROOT=$(dirname $0)/..
-
-REL_NAME=$(${ROOT}/bin/app)
-ERTS_VSN=$(${ROOT}/bin/system_version)
-
+SCRIPT_DIR=$(dirname $0)
+REL_NAME=$(${SCRIPT_DIR}/app)
 RELEASE=_rel/${REL_NAME}
-
-echo $SCRIPT
-echo $ROOT
-echo $REL_NAME
-echo $ERTS_VSN
 
 # strip symbol information out of any ERTS binaries
 FAT=$(file _rel/*/erts-*/bin/*|grep "not stripped"|awk '{print $1}'|cut -d: -f1)
@@ -43,5 +34,3 @@ cp /lib64/ld-linux*.so.* ${RELEASE}/lib64
 
 # and a shell
 cp /bin/sh ${RELEASE}/bin
-
-ls -R ${RELEASE}
