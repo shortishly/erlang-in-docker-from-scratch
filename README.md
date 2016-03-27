@@ -121,7 +121,7 @@ directly invokes `erlexec`. I have done this to reduce dependencies
 further so that the release, ERTS dynamic libraries, and `/bin/bash`
 only are present in the container.
 
-```shell
+```dockerfile
 FROM scratch
 MAINTAINER Peter Morgan <peter.james.morgan@gmail.com>
 
