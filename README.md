@@ -130,7 +130,7 @@ ARG REL_VSN=1
 ARG ERTS_VSN
 
 ENV BINDIR /erts-${ERTS_VSN}/bin
-ENV BOOT /releases/1/${REL_NAME}
+ENV BOOT /releases/${REL_VSN}/${REL_NAME}
 ENV CONFIG /releases/${REL_VSN}/sys.config
 ENV ARGS_FILE /releases/${REL_VSN}/vm.args
 
