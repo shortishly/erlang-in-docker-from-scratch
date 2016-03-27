@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/shortishly/erlang-in-docker-from-scratch.svg)](https://travis-ci.org/shortishly/erlang-in-docker-from-scratch)
+
 When packaging an application as a [Docker](https://www.docker.com)
 container it is too easy to just be lazy and put `FROM debian` (other
 distributions are available, replace `debian` with your distribution
