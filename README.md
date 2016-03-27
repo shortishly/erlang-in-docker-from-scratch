@@ -108,7 +108,7 @@ docker run \
        --name $(bin/release_name) \
        -d \
        $(bin/release_name):$(bin/version)
-```shell
+```
 
 Check the logs using `docker logs $(bin/release_name)` and
 you will see lots of application startup messages from SASL.
