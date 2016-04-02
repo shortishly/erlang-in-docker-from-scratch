@@ -55,6 +55,12 @@ cd eidfs
 make
 ```
 
+The `eidfs` application includes a simple
+[cowboy](https://github.com/ninenines/cowboy) "Hello World!" resource
+to show the container working. It also provides a secure shell daemon
+using [shelly](https://github.com/shortishly/shelly) into the BEAM
+enabling maintenance on the dockerised application.
+
 At the end of `make` a standard erlang release for the eidfs
 application is now present in the `_rel` directory. To make it run
 inside a scratch container we need to include any runtime dependencies
@@ -108,12 +114,55 @@ We have a docker packaged erlang release in ~17MB. Lets run it!
 ```shell
 docker run \
        --name $(bin/release_name) \
+       -e SHELLY_AUTHORIZED_KEYS="$(cat ~/.ssh/authorized_keys)" \
        -d \
        $(bin/release_name):$(bin/version)
 ```
 
+The `SHELLY_AUTHORIZED_KEYS` will copy your *public* keys into the
+Docker container so that you can ssh directly into the BEAM to perform
+any operational maintenance. If you'd prefer not to, just remove that
+line from `docker run`.
+
 Check the logs using `docker logs $(bin/release_name)` and
 you will see lots of application startup messages from SASL.
+
+You can find the IP address of the containes that is running by using
+`docker inspect`:
+
+```shell
+docker inspect --format={{.NetworkSettings.IPAddress}} $(bin/release_name)
+```
+
+We can `curl` the static "Hello World!" cowboy response by running:
+
+```shell
+curl http://$(docker inspect --format={{.NetworkSettings.IPAddress}} $(bin/release_name))/hello
+```
+
+If you included the `SHELLY_AUTHORIZED_KEYS` in your `docker run`
+above you can also ssh directly into the BEAM running inside the
+docker container:
+
+```shell
+ssh $(docker inspect --format={{.NetworkSettings.IPAddress}} $(bin/release_name))
+```
+
+The first time you connect you will need accept the ssh host key for the application:
+
+```shell
+ssh $(docker inspect --format={{.NetworkSettings.IPAddress}} $(bin/release_name))
+The authenticity of host '172.17.0.2 (172.17.0.2)' can't be established.
+RSA key fingerprint is SHA256:1EIgSYLN9pP9mwvnBf8ibQ/1bpEangTKprKKWJ9jQ7s.
+RSA key fingerprint is MD5:69:b8:52:22:30:c7:56:b2:f9:66:e6:39:68:7f:9e:b3.
+Are you sure you want to continue connecting (yes/no)? yes
+Warning: Permanently added '172.17.0.2' (RSA) to the list of known hosts.
+Eshell V7.2.1  (abort with ^G)
+(minerl@127.0.0.1)1>
+```
+
+You can type `exit().` to quit the shell, keeping the container running.
+
 
 You might notice that the
 [ENTRYPOINT](https://docs.docker.com/engine/reference/builder/#entrypoint)

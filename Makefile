@@ -17,9 +17,14 @@ PROJECT = eidfs
 PROJECT_DESCRIPTION = Erlang in Docker from scratch
 PROJECT_VERSION = 0.0.1
 
+DEPS = \
+	cowboy \
+	shelly
 
 LOCAL_DEPS = \
 	sasl
 
+dep_shelly = git https://github.com/shortishly/shelly.git master
+dep_cowboy = git https://github.com/ninenines/cowboy.git 2.0.0-pre.3
 
 include erlang.mk
