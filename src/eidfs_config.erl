@@ -12,14 +12,15 @@
 %% See the License for the specific language governing permissions and
 %% limitations under the License.
 
--module(minerl_app).
--behaviour(application).
+-module(eidfs_config).
+-export([acceptors/1]).
+-export([port/1]).
 
--export([start/2]).
--export([stop/1]).
+port(http) ->
+    envy:to_integer(eidfs, http_port, default(80)).
 
-start(_Type, _Args) ->
-    minerl_sup:start_link().
+acceptors(http) ->
+    envy:to_integer(eidfs, http_acceptors, default(100)).
 
-stop(_State) ->
-    ok.
+default(Default) ->
+    [os_env, app_env, {default, Default}].
