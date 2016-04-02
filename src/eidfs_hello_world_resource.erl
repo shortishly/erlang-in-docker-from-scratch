@@ -12,15 +12,9 @@
 %% See the License for the specific language governing permissions and
 %% limitations under the License.
 
--module(minerl_sup).
--behaviour(supervisor).
+-module(eidfs_hello_world_resource).
+-export([init/2]).
 
--export([start_link/0]).
--export([init/1]).
-
-start_link() ->
-    supervisor:start_link({local, ?MODULE}, ?MODULE, []).
-
-init([]) ->
-    Procs = [],
-    {ok, {{one_for_one, 1, 5}, Procs}}.
+init(Req, Opts) ->
+    Headers = [{<<"content-type">>, <<"text/plain">>}],
+    {ok, cowboy_req:reply(200, Headers, <<"Hello world!\n">>, Req), Opts}.
