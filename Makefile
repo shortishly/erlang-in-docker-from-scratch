@@ -15,7 +15,7 @@
 #
 PROJECT = eidfs
 PROJECT_DESCRIPTION = Erlang in Docker from scratch
-PROJECT_VERSION = 0.0.1
+PROJECT_VERSION = 0.0.2
 
 DEPS = \
 	cowboy \
