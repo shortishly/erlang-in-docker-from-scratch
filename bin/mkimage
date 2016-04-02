@@ -20,7 +20,7 @@ RELEASE=_rel/${REL_NAME}
 
 # strip symbol information out of any ERTS binaries
 for fat in $(file _rel/*/erts-*/bin/*|grep "not stripped"|awk '{print $1}'|cut -d: -f1); do
-    $fat &>/dev/null;
+    strip $fat &>/dev/null;
 done
 
 # copy any dynamically linked libaries used by ERTS into release
