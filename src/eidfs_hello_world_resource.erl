@@ -17,4 +17,4 @@
 
 init(Req, Opts) ->
     Headers = [{<<"content-type">>, <<"text/plain">>}],
-    {ok, cowboy_req:reply(200, Headers, <<"Hello world!">>, Req), Opts}.
+    {ok, cowboy_req:reply(200, Headers, <<"Hello world!\n">>, Req), Opts}.

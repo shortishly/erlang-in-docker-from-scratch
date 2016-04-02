@@ -19,12 +19,12 @@ PROJECT_VERSION = 0.0.1
 
 DEPS = \
 	cowboy \
-	envy
+	shelly
 
 LOCAL_DEPS = \
 	sasl
 
-dep_envy = git https://github.com/shortishly/envy.git master
+dep_shelly = git https://github.com/shortishly/shelly.git master
 dep_cowboy = git https://github.com/ninenines/cowboy.git 2.0.0-pre.3
 
 include erlang.mk

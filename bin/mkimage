@@ -24,7 +24,7 @@ for fat in $(file _rel/*/erts-*/bin/*|grep "not stripped"|awk '{print $1}'|cut -
 done
 
 # copy any dynamically linked libaries used by ERTS into release
-for lib in $(ldd _rel/*/erts-*/bin/* $(which sh)|grep "=>"|awk '{print $3}'|sort|uniq); do
+for lib in $(ldd _rel/*/erts-*/bin/* _rel/*/lib/*/priv/lib/* $(which sh)|grep "=>"|awk '{print $3}'|sort|uniq); do
     mkdir -p $(dirname ${RELEASE}$lib)
     cp -Lv $lib ${RELEASE}$lib
 done
