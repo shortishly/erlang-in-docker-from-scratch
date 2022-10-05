@@ -5,7 +5,7 @@ on:
       - 'main'
 jobs:
   docker:
-    name: Build OTP ${matrix.otp}}
+    name: Build OTP ${{matrix.otp}}
     strategy:
       matrix:
         include:
