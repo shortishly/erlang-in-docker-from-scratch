@@ -30,8 +30,14 @@ for lib in $(ldd _rel/*/erts-*/bin/* _rel/*/lib/*/priv/lib/* $(which sh) 2>/dev/
 done
 
 # ensure that the link loader is present
-mkdir -p ${RELEASE}/lib64
-cp /lib64/ld-linux*.so.* ${RELEASE}/lib64
+case `arch` in
+    x86_64)
+        mkdir -p ${RELEASE}/lib64
+        cp /lib64/ld-linux*.so.* ${RELEASE}/lib64;;
+
+    aarch64)
+        cp /lib/ld-linux*.so.* ${RELEASE}/lib;;
+esac
 
 # and a shell
 cp /bin/sh ${RELEASE}/bin
