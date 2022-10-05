@@ -1,0 +1,23 @@
+---
+on:
+  push:
+    branches:
+      - 'main'
+jobs:
+  docker:
+    name: Build OTP ${matrix.otp}}
+    strategy:
+      matrix:
+        include:
+          - otp: 25.1
+          - otp: 24.3
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v3
+      - name: set up beam
+        uses: erlef/setup-beam@v1
+        with:
+          otp-version: ${{matrix.otp}}
+      - name: build
+        run: make deps app rel

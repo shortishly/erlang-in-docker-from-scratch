@@ -1,4 +1,4 @@
-%% Copyright (c) 2016 Peter Morgan <peter.james.morgan@gmail.com>
+%% Copyright (c) 2016-2022 Peter Morgan <peter.james.morgan@gmail.com>
 %%
 %% Licensed under the Apache License, Version 2.0 (the "License");
 %% you may not use this file except in compliance with the License.
@@ -13,11 +13,12 @@
 %% limitations under the License.
 
 -module(eidfs_app).
+
+
 -behaviour(application).
-
-
 -export([start/2]).
 -export([stop/1]).
+
 
 start(_Type, _Args) ->
     try
@@ -28,20 +29,23 @@ start(_Type, _Args) ->
             {error, Reason}
     end.
 
+
 stop(#{listeners := Listeners}) ->
     lists:foreach(fun cowboy:stop_listener/1, Listeners);
+
 stop(_State) ->
     ok.
 
+
 start_http(Prefix) ->
-    {ok, _} = cowboy:start_http(Prefix,
-                                eidfs_config:acceptors(Prefix),
-                                [{port, eidfs_config:port(Prefix)}],
-                                [{env, [dispatch(Prefix)]}]),
+    {ok, _} = cowboy:start_clear(Prefix,
+                                 [{port, eidfs_config:port(Prefix)}],
+                                 #{env => dispatch(Prefix)}),
     Prefix.
 
+
 dispatch(Prefix) ->
-    {dispatch, cowboy_router:compile(resources(Prefix))}.
+    #{dispatch => cowboy_router:compile(resources(Prefix))}.
 
 
 resources(http) ->

@@ -1,4 +1,4 @@
-%% Copyright (c) 2016 Peter Morgan <peter.james.morgan@gmail.com>
+%% Copyright (c) 2016-2022 Peter Morgan <peter.james.morgan@gmail.com>
 %%
 %% Licensed under the Apache License, Version 2.0 (the "License");
 %% you may not use this file except in compliance with the License.
@@ -13,14 +13,19 @@
 %% limitations under the License.
 
 -module(eidfs_config).
+
+
 -export([acceptors/1]).
 -export([port/1]).
+
 
 port(http) ->
     envy:to_integer(eidfs, http_port, default(80)).
 
+
 acceptors(http) ->
     envy:to_integer(eidfs, http_acceptors, default(100)).
+
 
 default(Default) ->
     [os_env, app_env, {default, Default}].

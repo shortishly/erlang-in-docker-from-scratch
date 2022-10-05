@@ -1,4 +1,4 @@
-%% Copyright (c) 2016 Peter Morgan <peter.james.morgan@gmail.com>
+%% Copyright (c) 2016-2022 Peter Morgan <peter.james.morgan@gmail.com>
 %%
 %% Licensed under the Apache License, Version 2.0 (the "License");
 %% you may not use this file except in compliance with the License.
@@ -13,8 +13,11 @@
 %% limitations under the License.
 
 -module(eidfs_hello_world_resource).
+
+
 -export([init/2]).
 
+
 init(Req, Opts) ->
-    Headers = [{<<"content-type">>, <<"text/plain">>}],
+    Headers = #{<<"content-type">> => <<"text/plain">>},
     {ok, cowboy_req:reply(200, Headers, <<"Hello world!\n">>, Req), Opts}.

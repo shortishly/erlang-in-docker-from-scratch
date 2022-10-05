@@ -1,5 +1,5 @@
 #-*- mode: makefile-gmake -*-
-# Copyright (c) 2012-2016 Peter Morgan <peter.james.morgan@gmail.com>
+# Copyright (c) 2012-2022 Peter Morgan <peter.james.morgan@gmail.com>
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -18,8 +18,18 @@ PROJECT_DESCRIPTION = Erlang in Docker from scratch
 PROJECT_VERSION = 0.0.2
 
 
-BUILD_DEPS = \
+RELX_TAR = 0
+
+REL_DEPS = \
 	relx
+
+SHELL_OPTS = \
+	-config dev.config \
+	-s $(PROJECT) \
+	-s sync
+
+SHELL_DEPS = \
+	sync
 
 DEPS = \
 	cowboy \
@@ -32,7 +42,5 @@ dep_shelly = git https://github.com/shortishly/shelly.git
 
 dep_cowboy_commit = 2.9.0
 dep_shelly_commit = 0.4.0
-
-RELX_TAR = 0
 
 include erlang.mk

@@ -1,4 +1,4 @@
-%% Copyright (c) 2016-2022 Peter Morgan <peter.james.morgan@gmail.com>
+%% Copyright (c) 2022 Peter Morgan <peter.james.morgan@gmail.com>
 %%
 %% Licensed under the Apache License, Version 2.0 (the "License");
 %% you may not use this file except in compliance with the License.
@@ -12,18 +12,12 @@
 %% See the License for the specific language governing permissions and
 %% limitations under the License.
 
--module(eidfs_sup).
+
+-module(eidfs).
 
 
--behaviour(supervisor).
--export([init/1]).
--export([start_link/0]).
+-export([start/0]).
 
 
-start_link() ->
-    supervisor:start_link({local, ?MODULE}, ?MODULE, []).
-
-
-init([]) ->
-    Procs = [],
-    {ok, {{one_for_one, 1, 5}, Procs}}.
+start() ->
+    application:ensure_all_started(?MODULE).
