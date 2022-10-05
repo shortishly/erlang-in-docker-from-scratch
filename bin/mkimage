@@ -33,10 +33,10 @@ done
 case `arch` in
     x86_64)
         mkdir -p ${RELEASE}/lib64
-        cp /lib64/ld-linux*.so.* ${RELEASE}/lib64;;
+        cp -v /lib64/ld-linux*.so.* ${RELEASE}/lib64;;
 
     aarch64)
-        cp /lib/ld-linux*.so.* ${RELEASE}/lib;;
+        cp -v /lib/ld-linux*.so.* ${RELEASE}/lib;;
 esac
 
 # and a shell
